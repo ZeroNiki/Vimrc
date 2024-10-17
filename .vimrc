@@ -19,6 +19,12 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "Multi select
 Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
 
+"Auto-pairs
+Plugin 'LunarWatcher/auto-pairs'
+
+" Vim-surraund
+Plugin 'tpope/vim-surround'
+
 " Polyglot
 Plugin 'sheerun/vim-polyglot'
 Plugin 'radenling/vim-dispatch-neovim'
