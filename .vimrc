@@ -195,7 +195,8 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " NerdTree Map
-nnoremap <C-b> :NERDTree<CR>
+" Space + I
+nnoremap <leader>i :NERDTreeToggle<CR>
 
 " True Color support 
 if (empty($TMUX))
