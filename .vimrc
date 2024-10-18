@@ -126,11 +126,11 @@ set showtabline=1
 
 "Настройки табов для Python, согласно рекоммендациям
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set smarttab
 set expandtab "Ставим табы пробелами
-set softtabstop=4 "4 пробела в табе
+set softtabstop=2 "4 пробела в табе
 
 "Автоотступ
 set autoindent
