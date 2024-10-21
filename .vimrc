@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set list
+
 "leader key
 let mapleader = " "
 
@@ -23,6 +25,9 @@ Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
 
 "Welcome page
 Plugin 'mhinz/vim-startify'
+
+"Float term
+Plugin 'voldikss/vim-floaterm'
 
 "Auto-pairs
 Plugin 'LunarWatcher/auto-pairs'
@@ -59,7 +64,8 @@ Plugin 'bfrg/vim-cpp-modern'
 Plugin 'preservim/nerdtree'
 
 "Fzf
-Plugin  'junegunn/fzf.vim'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 
 "Commentary
 Plugin 'tpope/vim-commentary'
@@ -98,6 +104,7 @@ augroup SyntaxRangeHTML
   autocmd BufRead,BufNewFile *.js silent! call SyntaxRange#Include('<style>', '</style>', 'css')
 augroup END
 
+
 "Настройки табов для Python, согласно рекоммендациям
 set tabstop=4 
 set shiftwidth=4
@@ -107,9 +114,6 @@ set softtabstop=4 "4 пробела в табе
 
 " Автоотступ
 set autoindent
-
-" Подсвечиваем все что можно подсвечивать
-let python_highlight_all = 1
 
 let g:rainbow_active = 1
 " Включаем 256 цветов в терминале, мы ведь работаем из иксов?
@@ -210,6 +214,9 @@ let g:airline_symbols.linenr = ''
 " NerdTree Map
 nnoremap <leader>i :NERDTreeToggle<CR>
 
+"File search
+nnoremap <leader>l :Files<CR>
+
 " True Color support 
 if (empty($TMUX))
   if (has("nvim"))
@@ -254,6 +261,9 @@ let NERDTreeMapOpenInTab='<ENTER>'
 
 " Настройки отступов для C/C++
 autocmd FileType c,cpp setlocal shiftwidth=2 tabstop=2 expandtab cindent autoindent
+
+"Float term
+nnoremap <C-w> :FloatermToggle<CR>
 
 " Coc configuration
 " https://raw.githubusercontent.com/neoclide/coc.nvim/master/doc/coc-example-config.vim
@@ -418,6 +428,3 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-
-
