@@ -3,6 +3,8 @@ filetype off                  " required
 
 "leader key
 let mapleader = " "
+
+" Fast motion
 map <Leader> <Plug>(easymotion-prefix)
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,6 +27,8 @@ Plugin 'LunarWatcher/auto-pairs'
 " Vim-surraund
 Plugin 'tpope/vim-surround'
 
+" Syntax Highlight
+Plugin 'inkarkat/vim-SyntaxRange'
 " Polyglot
 Plugin 'sheerun/vim-polyglot'
 Plugin 'radenling/vim-dispatch-neovim'
@@ -84,7 +88,12 @@ set background=dark
 "colorscheme tokyonight 
 colorscheme gruvbox 
 
-
+"SyntaxRange for HTML
+augroup SyntaxRangeHTML
+  autocmd!
+  autocmd BufRead,BufNewFile *.js silent! call SyntaxRange#Include('.*HTML.*`', '`', 'html')
+  autocmd BufRead,BufNewFile *.js silent! call SyntaxRange#Include('<style>', '</style>', 'css')
+augroup END
 
 "Настройки табов для Python, согласно рекоммендациям
 set tabstop=4 
@@ -99,6 +108,7 @@ set autoindent
 " Подсвечиваем все что можно подсвечивать
 let python_highlight_all = 1
 
+let g:rainbow_active = 1
 " Включаем 256 цветов в терминале, мы ведь работаем из иксов?
 " Нужно во многих терминалах, например в gnome-terminal
 set t_Co=256
@@ -195,7 +205,6 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " NerdTree Map
-" Space + I
 nnoremap <leader>i :NERDTreeToggle<CR>
 
 " True Color support 
@@ -406,3 +415,6 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+
