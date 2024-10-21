@@ -21,6 +21,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 "Multi select
 Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
 
+"Welcome page
+Plugin 'mhinz/vim-startify'
+
 "Auto-pairs
 Plugin 'LunarWatcher/auto-pairs'
 
