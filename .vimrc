@@ -20,6 +20,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
+"Smooth scroll
+Plugin 'psliwka/vim-smoothie'
+
 "Multi select
 Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
 
@@ -428,3 +431,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"Smooth nnoremap
+" ctrl+d , ctrl+u, ctrl+f, ctrl+b, zz, zt, zb
+nnoremap <unique> <C-D> <cmd>call smoothie#do("\<C-D>") <CR>
+vnoremap <unique> <C-D> <cmd>call smoothie#do("\<C-D>") <CR>
