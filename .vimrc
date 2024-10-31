@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set clipboard=unnamedplus
 filetype off                  " required
 
 set list
@@ -10,10 +11,8 @@ let mapleader = " "
 map <Leader> <Plug>(easymotion-prefix)
 
 set rtp+=~/.vim/bundle/Vundle.vim
-
 "Plug
 call vundle#begin()
-
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
@@ -40,6 +39,7 @@ Plugin 'tpope/vim-surround'
 
 " Syntax Highlight
 Plugin 'inkarkat/vim-SyntaxRange'
+
 " Polyglot
 Plugin 'sheerun/vim-polyglot'
 Plugin 'radenling/vim-dispatch-neovim'
@@ -86,7 +86,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Font
-set guifont=monospace\ 30 
+set guifont=monospace\ 30
 
 set termguicolors
 
@@ -186,6 +186,8 @@ set laststatus=2
 
 " air-line
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -196,10 +198,8 @@ let g:airline_left_sep = '»'
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
 let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.branch = '⎇ '
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
@@ -212,7 +212,18 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+let g:airline_symbols.linenr = ' '
+
+" Tabline
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+
+let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
+let g:airline#extensions#tabline#tabs_label = ''       " can put text here like BUFFERS to denote buffers (I clear it so nothing is shown)
+let g:airline#extensions#tabline#buffers_label = ''    " can put text here like TABS to denote tabs (I clear it so nothing is shown)
+let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab
 
 " NerdTree Map
 nnoremap <leader>i :NERDTreeToggle<CR>
