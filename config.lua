@@ -1,11 +1,45 @@
 -- Colorscheme
-lvim.colorscheme = "retrobox"
+lvim.colorscheme = "gruvbox"
+vim.o.background = "dark"
+vim.o.termguicolors = true
+
 lvim.builtin.lualine.options.theme = "gruvbox"
 -- Disable
 lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
 -- Treesitor
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.rainbow.enable = true
+
+-- CorePlugins
+-- Configure lualine separators and theme through LunarVim
+lvim.builtin.lualine.options = {
+  theme = 'gruvbox', -- Automatically select theme (can specify like 'gruvbox', 'nord', etc.)
+  section_separators = { left = '', right = '' }, -- Main section separators
+  component_separators = { left = '', right = '' },
+}
+
+-- Setting up active sections for lualine
+lvim.builtin.lualine.sections = {
+  lualine_a = { 'mode' },                               -- Show current mode (NORMAL, INSERT, etc.)
+  lualine_b = { 'branch', 'diff' },                     -- Git branch and diff indicators
+  lualine_c = { 'filename' },                           -- Display the file name
+  lualine_x = { 'encoding', 'fileformat', 'filetype' }, -- Encoding, format, and file type
+  lualine_y = { 'progress' },                           -- Show progress in the file (%)
+  lualine_z = { 'location' },                           -- Line and column number
+}
+
+-- Setting up inactive sections for lualine (when window is not active)
+lvim.builtin.lualine.inactive_sections = {
+  lualine_a = {},
+  lualine_b = {},
+  lualine_c = { 'filename' }, -- Display only the filename in inactive windows
+  lualine_x = { 'location' }, -- Show line and column in inactive windows
+  lualine_y = {},
+  lualine_z = {},
+}
+
+lvim.builtin.bufferline.options.separator_style = "slope" -- (slant) (slope) (thick) (thin)
+lvim.builtin.bufferline.options.hover = { enabled = true, delay = 200, reveal = { 'close' } }
 
 -- Убрать символы '~' после конца файла
 vim.opt.fillchars = { eob = " " }
@@ -97,7 +131,6 @@ lvim.keys.normal_mode["<Leader>i"] = ":NeoTreeFloatToggle<CR>" -- Float
 -- Find files via telescope
 lvim.keys.normal_mode["<Leader>z"] = ":Telescope find_files <CR>" -- Find files
 
-
 -- Telescope extensions
 lvim.builtin.telescope.on_config_done = function(telescope)
   pcall(telescope.load_extension, "frecency")
@@ -105,12 +138,14 @@ lvim.builtin.telescope.on_config_done = function(telescope)
   -- any other extensions loading
 end
 
-
 -- Plugins
 lvim.plugins = {
 
   -- colorschemes
   { "lunarvim/colorschemes" },
+
+  -- Gruvbox
+  { "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
 
   -- dressing
   {
