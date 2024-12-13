@@ -1,0 +1,7 @@
+{
+  "python.analysis.typeCheckingMode": "base",
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.useLibraryCodeForTypes": true,
+  "python.autoComplete.addBrackets": true,
+  "python.analysis.diagnosticMode": "openFilesOnly"
+}

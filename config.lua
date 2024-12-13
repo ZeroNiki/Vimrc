@@ -8,16 +8,20 @@ lvim.builtin.lualine.options.theme = "gruvbox"
 -- Disable nvimtree
 lvim.builtin.nvimtree.active = false
 
-
 -- lsp settings
 -- Disable auto install sever
 lvim.lsp.automatic_servers_installation = false
+
+lvim.builtin.treesitter.ensure_installed = {
+  "python",
+}
+
 lvim.lsp.installer.setup.automatic_servers_installation = false
 local formatters = require("lvim.lsp.null-ls.formatters")
-formatters.setup({ name = "black" })
+formatters.setup { { name = "black" }, }
 
 local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({ command = "flake8", args = { "--ignore=E203" }, filetypes = { "python" } })
+linters.setup { { command = "flake8", args = { "--ignore=E203" }, filetypes = { "python" } } }
 
 -- Treesitor
 lvim.builtin.treesitter.matchup.enable = true
