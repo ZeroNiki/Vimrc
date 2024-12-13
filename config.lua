@@ -17,11 +17,23 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 
 lvim.lsp.installer.setup.automatic_servers_installation = false
-local formatters = require("lvim.lsp.null-ls.formatters")
-formatters.setup { { name = "black" }, }
 
 local linters = require("lvim.lsp.null-ls.linters")
-linters.setup { { command = "flake8", args = { "--ignore=E203" }, filetypes = { "python" } } }
+linters.setup {
+  {
+    command = "flake8",
+    args = { "--ignore=E203", "--max-line-length", "79" },
+    filetypes = { "python" },
+  },
+}
+
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup {
+  {
+    name = "black",
+    args = { "--line-length", "79" },
+  },
+}
 
 -- Treesitor
 lvim.builtin.treesitter.matchup.enable = true
