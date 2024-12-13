@@ -4,8 +4,21 @@ vim.o.background = "dark"
 vim.o.termguicolors = true
 
 lvim.builtin.lualine.options.theme = "gruvbox"
--- Disable
-lvim.builtin.nvimtree.active = false -- NOTE: using neo-tree
+
+-- Disable nvimtree
+lvim.builtin.nvimtree.active = false
+
+
+-- lsp settings
+-- Disable auto install sever
+lvim.lsp.automatic_servers_installation = false
+lvim.lsp.installer.setup.automatic_servers_installation = false
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({ name = "black" })
+
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({ command = "flake8", args = { "--ignore=E203" }, filetypes = { "python" } })
+
 -- Treesitor
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.treesitter.rainbow.enable = true
@@ -87,6 +100,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Lsp helper
 lvim.keys.normal_mode["<leader>d"] = ":lua vim.lsp.buf.hover()<CR>"
+
+
 
 -- Codi start python
 lvim.keys.normal_mode["<leader>g"] = ":Codi python<CR>"
