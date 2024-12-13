@@ -31,9 +31,15 @@ local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup {
   {
     name = "black",
-    args = { "--line-length", "79" },
+    args = { "-l", "79" },
+    filetypes = { "python" },
+  },
+  {
+    name = "isort",
+    filetypes = { "python" },
   },
 }
+
 
 -- Treesitor
 lvim.builtin.treesitter.matchup.enable = true
