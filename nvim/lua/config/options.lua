@@ -1,6 +1,8 @@
 -- Базовые опции Neovim
 local opt = vim.opt
 
+opt.clipboard = "unnamedplus"
+
 opt.number = true          -- Номера строк
 opt.relativenumber = true  -- Относительные номера
 opt.tabstop = 4

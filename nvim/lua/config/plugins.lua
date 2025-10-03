@@ -36,6 +36,16 @@ require("lazy").setup({
     },
 
     {
+        "goolord/alpha-nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
+
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+    },
+
+    {
       "akinsho/bufferline.nvim",
       dependencies = "nvim-tree/nvim-web-devicons",
       config = function()
